@@ -74,6 +74,7 @@ commit and push from dev
 /var/www$ sudo setfacl -m jenkins:rwx html/
 getfacel html/
 Cp * /var/www/html -> jenkins shell
+scp * admin@ip:/var/www/html
 access pubip of webserver</code></pre>
     </section>
 
@@ -259,6 +260,9 @@ terraform init
 terraform plan
 terraform apply -auto-approve
 
+acl allowed_sites dstdomain .iacsd.com
+http_access allow allowed_sites
+http_access deny all
 
 </body>
 </html>
